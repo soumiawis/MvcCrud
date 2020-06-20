@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Ajouter un Etudiant{% endblock %}
+
+{% block body   %}
+        <div class="container">
+
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="mt-2 alert alert-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            <div style="width: 100%" class="float-left mt-3 mb-3">
+                <h1 class="float-left">Liste Etudiant</h1>
+                <a class="float-right  btn btn-primary" href="{{ path('etudiant_add') }}"> Ajouter</a>
+            </div>
+
+            {% if etudiants | length > 0 %}
+
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Niveau</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Telephone</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for etudiant in etudiants %}
+                    <tr>
+                        <th scope="row">{{etudiant.id}}</th>
+                        <td>{{etudiant.nom}}</td>
+                        <td>{{etudiant.niveau}}</td>
+                        <td>{{etudiant.email}}</td>
+                        <td>{{etudiant.tel}}</td>
+                        <td>
+                            <a class="btn btn-success" href="{{path('etudiant_edit', {id : etudiant.id})}}">Modifier</a>
+                            <a class="btn btn-danger" href="{{path('etudiant_delete', {id : etudiant.id})}}">Supprimer</a>
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {% else %}
+                <div style="clear:left" class="alert alert-warning clear" > La liste est vide  :( </div>
+            {% endif %}
+        </div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+easy_admin:
+        entities:
+          Artiste:
+            class: App\Entity\Artiste
+          Categorie:
+            class: App\Entity\Categorie
+          Evenement:
+            class: App\Entity\Evenement
+          Lieux:
+            class: App\Entity\Lieux
+          Rencontre:
+            class: App\Entity\Rencontre
+          User:
+            class: App\Entity\User
+
+
+
